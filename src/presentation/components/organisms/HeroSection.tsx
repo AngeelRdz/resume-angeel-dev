@@ -10,7 +10,7 @@ type HeroSectionProps = {
 
 export function HeroSection({ data }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden rounded-4xl border border-foreground/10 bg-gradient-to-br from-background via-background to-foreground/10 p-10 shadow-lg">
+    <section className="relative overflow-hidden rounded-4xl border border-foreground/10 bg-linear-to-br from-background via-background to-foreground/10 p-10 shadow-lg">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
           <div className="flex flex-wrap gap-3">
