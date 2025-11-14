@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "Ángel Rodríguez | Frontend Engineer",
+    "description": "Interactive resume and portfolio for Ángel Rodríguez, frontend engineer focused on clean architecture and atomic design."
+  },
+  "nav": {
+    "language": "Language"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "role": "Frontend Engineer",
+    "headline": "I deliver scalable web experiences guided by clean architecture, Atomic Design, and component-driven development.",
+    "availability": "Open to remote collaborations and product teams.",
+    "primaryCta": "Get in touch",
+    "secondaryCtaLinkedin": "View LinkedIn",
+    "secondaryCtaGithub": "View GitHub"
+  },
+  "about": {
+    "title": "About me",
+    "highlights": {
+      "experience": {
+        "label": "Trajectory",
+        "value": "9+ years shipping end-to-end digital products"
+      },
+      "location": {
+        "label": "Location",
+        "value": "Mexico City · Remote LATAM / USA"
+      },
+      "principles": {
+        "label": "Principles",
+        "value": "Clean Architecture · SOLID · Atomic Design"
+      }
+    }
+  },
+  "experience": {
+    "title": "Professional experience",
+    "currentLabel": "Present"
+  },
+  "skills": {
+    "title": "Skills",
+    "primaryTitle": "Core stack",
+    "primaryDescription": "Technologies and frameworks I rely on to build scalable, measurable, and maintainable products.",
+    "complementaryTitle": "Complementary",
+    "complementaryDescription": "Tools and disciplines that strengthen my delivery process.",
+    "valuesTitle": "What guides me",
+    "values": [
+      "Data-informed design and development",
+      "Close collaboration with product and UX",
+      "Living, automated documentation",
+      "Quality through automated testing"
+    ]
+  },
+  "projects": {
+    "title": "Featured projects"
+  },
+  "contact": {
+    "title": "Let's build together",
+    "subtitle": "Have a product challenge or want to collaborate? I'm ready to chat.",
+    "emailLabel": "Write me",
+    "socialLabel": "Professional networks"
+  }
+}
+
+

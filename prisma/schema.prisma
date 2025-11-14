@@ -1,0 +1,155 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String           @id @default(cuid())
+  firstName      String
+  lastName       String
+  fullName       String
+  headline       String
+  summary        String
+  birthDate      DateTime?
+  locationCity   String
+  locationRegion String?
+  country        String
+  email          String           @unique
+  phone          String?
+  githubUrl      String?
+  linkedinUrl    String?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  experiences    Experience[]
+  skills         UserSkill[]
+  technologies   UserTechnology[]
+}
+
+model Experience {
+  id               String                     @id @default(cuid())
+  user             User                       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId           String
+  companyName      String
+  companyWebsite   String?
+  companyLocation  String?
+  roleTitle        String
+  description      String?
+  startDate        DateTime
+  endDate          DateTime?
+  isCurrent        Boolean                    @default(false)
+  responsibilities ExperienceResponsibility[]
+  projects         ExperienceProject[]
+  technologies     ExperienceTechnology[]
+  createdAt        DateTime                   @default(now())
+  updatedAt        DateTime                   @updatedAt
+}
+
+model ExperienceResponsibility {
+  id           String     @id @default(cuid())
+  experience   Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  experienceId String
+  order        Int
+  description  String
+}
+
+model ExperienceProject {
+  id           String     @id @default(cuid())
+  experience   Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  experienceId String
+  name         String
+  description  String?
+  url          String?
+  order        Int
+}
+
+model Skill {
+  id        String        @id @default(cuid())
+  name      String        @unique
+  category  SkillCategory
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  users     UserSkill[]
+}
+
+enum SkillCategory {
+  FRONTEND
+  BACKEND
+  DESIGN
+  DEVOPS
+  MOBILE
+  DATA
+  MANAGEMENT
+  OTHER
+}
+
+model UserSkill {
+  id        String      @id @default(cuid())
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  skill     Skill       @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  skillId   String
+  level     SkillLevel?
+  highlight Boolean     @default(false)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  @@unique([userId, skillId])
+}
+
+enum SkillLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  EXPERT
+}
+
+model Technology {
+  id          String                 @id @default(cuid())
+  name        String                 @unique
+  category    TechnologyCategory
+  createdAt   DateTime               @default(now())
+  updatedAt   DateTime               @updatedAt
+  experiences ExperienceTechnology[]
+  users       UserTechnology[]
+}
+
+enum TechnologyCategory {
+  FRONTEND
+  BACKEND
+  MOBILE
+  DATABASE
+  CLOUD
+  TOOLING
+  DESIGN
+  OTHER
+}
+
+model ExperienceTechnology {
+  id           String     @id @default(cuid())
+  experience   Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  experienceId String
+  technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+  technologyId String
+
+  @@unique([experienceId, technologyId])
+}
+
+model UserTechnology {
+  id           String     @id @default(cuid())
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String
+  technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+  technologyId String
+
+  @@unique([userId, technologyId])
+}

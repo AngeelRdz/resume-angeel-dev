@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "Ángel Rodríguez | Frontend Engineer",
+    "description": "Currículum interactivo y portafolio de Ángel Rodríguez, especialista en frontend con enfoque en arquitectura limpia y diseño atómico."
+  },
+  "nav": {
+    "language": "Idioma"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "role": "Frontend Engineer",
+    "headline": "Diseño y desarrollo experiencias web escalables aplicando arquitectura limpia, Atomic Design y componentes reutilizables.",
+    "availability": "Disponible para colaboraciones remotas y productos SaaS.",
+    "primaryCta": "Contáctame",
+    "secondaryCtaLinkedin": "Ver LinkedIn",
+    "secondaryCtaGithub": "Ver GitHub"
+  },
+  "about": {
+    "title": "Acerca de mí",
+    "highlights": {
+      "experience": {
+        "label": "Trayectoria",
+        "value": "9+ años desarrollando productos digitales end to end"
+      },
+      "location": {
+        "label": "Ubicación",
+        "value": "Ciudad de México · Remoto LATAM / USA"
+      },
+      "principles": {
+        "label": "Principios",
+        "value": "Clean Architecture · SOLID · Atomic Design"
+      }
+    }
+  },
+  "experience": {
+    "title": "Experiencia profesional",
+    "currentLabel": "Actualidad"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "primaryTitle": "Stack principal",
+    "primaryDescription": "Tecnologías y marcos con los que construyo productos escalables, medibles y mantenibles.",
+    "complementaryTitle": "Complementarias",
+    "complementaryDescription": "Herramientas y disciplinas que refuerzan mi proceso de entrega.",
+    "valuesTitle": "Lo que me guía",
+    "values": [
+      "Diseño y desarrollo guiado por datos",
+      "Colaboración estrecha con producto y UX",
+      "Documentación viva y automatizada",
+      "Calidad garantizada con pruebas automatizadas"
+    ]
+  },
+  "projects": {
+    "title": "Proyectos destacados"
+  },
+  "contact": {
+    "title": "Construyamos algo juntos",
+    "subtitle": "¿Tienes un reto de producto o quieres colaborar? Estoy listo para conversar.",
+    "emailLabel": "Escríbeme",
+    "socialLabel": "Redes profesionales"
+  }
+}
+
+
