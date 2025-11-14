@@ -8,7 +8,7 @@ type ContactSectionProps = {
 
 export function ContactSection({ data }: ContactSectionProps) {
   return (
-    <section className="rounded-4xl border border-foreground/10 bg-gradient-to-br from-background via-background to-foreground/5 p-10 shadow-lg">
+    <section className="rounded-4xl border border-foreground/10 bg-linear-to-br from-background via-background to-foreground/5 p-10 shadow-lg">
       <Heading as={2}>{data.title}</Heading>
       <Text className="mt-4 text-lg">{data.subtitle}</Text>
 
