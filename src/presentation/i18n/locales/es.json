@@ -1,10 +1,17 @@
 {
   "meta": {
     "title": "Ángel Rodríguez | Frontend Engineer",
-    "description": "Currículum interactivo y portafolio de Ángel Rodríguez, especialista en frontend con enfoque en arquitectura limpia y diseño atómico."
+    "description": "Portafolio de Ángel Rodríguez, desarrollador Frontend especializado en crear experiencias web escalables y de alto rendimiento con Next.js, React y TypeScript."
   },
   "nav": {
-    "language": "Idioma"
+    "language": "Idioma",
+    "home": "Inicio",
+    "about": "Acerca de mí",
+    "experience": "Experiencia",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "menu": "Menú"
   },
   "hero": {
     "greeting": "Hola, soy",
@@ -20,15 +27,15 @@
     "highlights": {
       "experience": {
         "label": "Trayectoria",
-        "value": "9+ años desarrollando productos digitales end to end"
+        "value": "9+ años desarrollando productos digitales"
       },
       "location": {
         "label": "Ubicación",
-        "value": "Ciudad de México · Remoto LATAM / USA"
+        "value": "Ciudad de México"
       },
       "principles": {
         "label": "Principios",
-        "value": "Clean Architecture · SOLID · Atomic Design"
+        "value": "Clean Architecture · Principios SOLID · Atomic Design"
       }
     }
   },

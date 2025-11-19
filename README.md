@@ -59,3 +59,13 @@ npm run dev
 ```
 
 La aplicación quedará disponible en `http://localhost:3000`.
+
+## ✏️ Personalización
+
+1. Modifica o extiende los datos en `prisma/seed.ts` y ejecuta `npm run db:seed`.
+2. Crea nuevas migraciones si amplías el modelo (`npm run prisma:migrate`).
+3. Ajusta textos o copy por idioma en `src/presentation/i18n/locales`.
+4. Extiende la lógica de view models en `src/presentation/view-models`.
+5. Crea nuevos componentes siguiendo la jerarquía atómica dentro de `src/presentation/components`.
+
+¡Listo! Tienes una base sólida para tu portfolio profesional.
