@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { defaultLocale } from "@/config/i18n.config";
+import { ThemeProvider } from "@/presentation/providers/ThemeProvider";
 
 import "./globals.css";
 
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Ángel Rodríguez",
   },
   description:
-    "Currículum interactivo y portafolio de Ángel Rodríguez, especialista en desarrollo frontend con Next.js.",
+    "Portafolio de Ángel Rodríguez, desarrollador Frontend especializado en crear experiencias web escalables y de alto rendimiento con Next.js, React y TypeScript.",
   alternates: {
     canonical: "/",
   },
@@ -39,7 +40,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground antialiased`}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import type { Profile } from "@/core/domain/entities/profile";
+import { Loader } from "@/presentation/components/atoms/Loader";
 import { HomeTemplate } from "@/presentation/components/templates/HomeTemplate";
 import { TranslationProvider } from "@/presentation/providers/TranslationProvider";
 
@@ -12,7 +13,8 @@ type ApiResponse = {
 
 function LoadingState() {
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-background text-foreground">
+    <div className="flex min-h-dvh w-full flex-col items-center justify-center gap-6 bg-background text-foreground">
+      <Loader />
       <p className="text-sm font-medium uppercase tracking-[0.4em] text-foreground/50">
         Cargando perfil...
       </p>
@@ -63,7 +65,7 @@ export function HomePage() {
   const content = useMemo(() => {
     if (error) {
       return (
-        <div className="flex min-h-dvh items-center justify-center bg-background px-6 text-center text-foreground sm:px-12">
+        <div className="flex min-h-dvh w-full items-center justify-center bg-background px-6 text-center text-foreground sm:px-12">
           <div className="max-w-lg space-y-3">
             <p className="text-lg font-semibold text-foreground">{error}</p>
             <p className="text-sm text-foreground/70">

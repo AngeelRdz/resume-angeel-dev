@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 
 import type { Profile } from "@/core/domain/entities/profile";
-import { LanguageSwitcher } from "@/presentation/components/molecules/LanguageSwitcher";
+import { Navigation } from "@/presentation/components/organisms/Navigation";
 import { HeroSection } from "@/presentation/components/organisms/HeroSection";
 import { AboutSection } from "@/presentation/components/organisms/AboutSection";
 import { ExperienceSection } from "@/presentation/components/organisms/ExperienceSection";
@@ -26,21 +26,33 @@ export function HomeTemplate({ profile }: HomeTemplateProps) {
   );
 
   return (
-    <div className="mx-auto flex min-h-dvh max-w-6xl flex-col gap-10 px-6 py-12 sm:px-12 sm:py-16">
-      <header className="flex justify-end">
-        <LanguageSwitcher />
-      </header>
-      <main className="flex flex-col gap-12">
+    <>
+      <Navigation />
+      <div className="w-full">
         <HeroSection data={viewModel.hero} />
-        <AboutSection data={viewModel.about} />
-        <ExperienceSection data={viewModel.experience} />
-        <SkillsSection data={viewModel.skills} />
-        {viewModel.projects.items.length > 0 && (
-          <ProjectsSection data={viewModel.projects} />
-        )}
-        <ContactSection data={viewModel.contact} />
-      </main>
-    </div>
+        <div className="mx-auto max-w-6xl px-6 py-12 sm:px-12 sm:py-16">
+          <main className="flex flex-col gap-12">
+            <section id="about">
+              <AboutSection data={viewModel.about} />
+            </section>
+            <section id="experience">
+              <ExperienceSection data={viewModel.experience} />
+            </section>
+            <section id="skills">
+              <SkillsSection data={viewModel.skills} />
+            </section>
+            {viewModel.projects.items.length > 0 && (
+              <section id="projects">
+                <ProjectsSection data={viewModel.projects} />
+              </section>
+            )}
+            <section id="contact">
+              <ContactSection data={viewModel.contact} />
+            </section>
+          </main>
+        </div>
+      </div>
+    </>
   );
 }
 

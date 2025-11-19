@@ -36,9 +36,9 @@ type ButtonProps = ButtonElementProps | InternalLinkProps | ExternalLinkProps;
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-foreground text-background hover:bg-foreground/90 focus-visible:outline-foreground",
+    "bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:outline-primary dark:bg-[#2d4a3a] dark:text-white dark:hover:bg-[#2d4a3a]/90",
   secondary:
-    "border border-foreground/20 text-foreground hover:bg-foreground/5 focus-visible:outline-foreground/40",
+    "border border-primary/30 bg-transparent text-primary hover:bg-primary/10 focus-visible:outline-primary/40 dark:border-[#2d4a3a]/50 dark:text-white dark:hover:bg-[#2d4a3a]/20",
   ghost:
     "text-foreground/70 hover:text-foreground hover:bg-foreground/10 focus-visible:outline-foreground/40",
 };
