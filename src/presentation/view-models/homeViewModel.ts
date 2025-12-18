@@ -24,6 +24,11 @@ export interface HeroAction {
 	download?: boolean;
 }
 
+export interface TechnologyItem {
+	name: string;
+	iconName?: string | null;
+}
+
 export interface ExperienceViewModel {
 	id: Experience["id"];
 	company: string;
@@ -33,7 +38,7 @@ export interface ExperienceViewModel {
 	period: string;
 	description?: string | null;
 	highlights: string[];
-	techStack: string[];
+	techStack: TechnologyItem[];
 }
 
 export interface ProjectViewModel {
@@ -42,7 +47,7 @@ export interface ProjectViewModel {
 	description?: string | null;
 	url?: ExternalHref | null;
 	company: string;
-	techStack: string[];
+	techStack: TechnologyItem[];
 }
 
 export interface ContactSocialLink {
@@ -67,6 +72,8 @@ export interface HomeViewModel {
 		title: string;
 		summary: string;
 		highlights: Highlight[];
+		profileImageUrl?: string | null;
+		socialLinks: ContactSocialLink[];
 	};
 	experience: {
 		title: string;
@@ -128,8 +135,11 @@ function formatExperiencePeriod(
 	return `${start} – ${end}`;
 }
 
-function mapExperienceTechStack(technologies: Technology[]) {
-	return technologies.map((technology) => technology.name);
+function mapExperienceTechStack(technologies: Technology[]): TechnologyItem[] {
+	return technologies.map((technology) => ({
+		name: technology.name,
+		iconName: technology.iconName,
+	}));
 }
 
 function mapProjectsFromExperiences(
@@ -269,6 +279,8 @@ export function createHomeViewModel({
 			title: t("about.title"),
 			summary: profile.personalInfo.summary,
 			highlights,
+			profileImageUrl: profile.personalInfo.profileImageUrl,
+			socialLinks: contactSocials,
 		},
 		experience: {
 			title: t("experience.title"),
@@ -283,7 +295,10 @@ export function createHomeViewModel({
 			complementaryDescription: t("skills.complementaryDescription"),
 			complementarySkills: complementary,
 			valuesTitle: t("skills.valuesTitle"),
-			values: t("skills.values", { returnObjects: true }) as string[],
+			values: (() => {
+				const values = t("skills.values", { returnObjects: true });
+				return Array.isArray(values) ? values : [];
+			})(),
 		},
 		projects: {
 			title: t("projects.title"),

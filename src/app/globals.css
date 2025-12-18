@@ -3,27 +3,37 @@
 :root {
 	--background: #ffffff;
 	--foreground: #171717;
-	--primary: #4a7c59;
+	--primary: #4424d3;
 	--primary-foreground: #ffffff;
-	--secondary: #6b8e6b;
+	--secondary: #331ba9;
 	--secondary-foreground: #ffffff;
 	--wave-divider: #ffffff;
-	--button-primary-dark: #4a7c59;
-	--hero-bg: #4a7c59;
+	--hero-bg: #4424d3;
+	--nav-border: #4424d3;
+	--badge-accent: #4424d3;
+	--badge-accent-bg: rgba(68, 36, 211, 0.15);
+	--link-color: #4424d3;
+	--social-icon-color: #ffffff;
 }
 
 [data-theme="dark"] {
-	--background: #1f2937;
+	--background: #00002a;
 	--foreground: #f9fafb;
-	--primary: #4a7c59;
+	--primary: #4424d3;
 	--primary-foreground: #ffffff;
-	--secondary: #6b8e6b;
+	--secondary: #331ba9;
 	--secondary-foreground: #ffffff;
-	--wave-divider: #1f2937;
-	--button-primary-dark: #2d4a3a;
-	--hero-bg: #2d4a3a;
+	--wave-divider: #00002a;
+	--hero-bg: #331ba9;
+	--nav-border: #4424d3;
+	--badge-accent: #ffffff;
+	--badge-accent-bg: rgba(255, 255, 255, 0.15);
+	--link-color: #7c5cf5;
+	--social-icon-color: #ffffff;
 }
 
+/* Tailwind CSS v4 theme configuration */
+/* stylelint-disable-next-line at-rule-no-unknown */
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
@@ -32,6 +42,8 @@
 	--color-secondary: var(--secondary);
 	--color-secondary-foreground: var(--secondary-foreground);
 	--color-wave-divider: var(--wave-divider);
+	--color-badge-accent: var(--badge-accent);
+	--color-link: var(--link-color);
 	--font-sans: var(--font-geist-sans);
 	--font-mono: var(--font-geist-mono);
 }
@@ -41,4 +53,76 @@ body {
 	color: var(--foreground);
 	font-family: Arial, Helvetica, sans-serif;
 	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Link styles */
+a {
+	color: var(--link-color);
+	transition: color 0.3s ease;
+}
+
+a:hover {
+	opacity: 0.8;
+}
+
+/* Navigation styles */
+nav {
+	background: transparent;
+	backdrop-filter: blur(10px);
+	transition: all 0.3s ease;
+}
+
+.nav-border {
+	border-color: var(--nav-border);
+}
+
+.badge-accent {
+	background-color: var(--badge-accent-bg);
+	color: var(--badge-accent);
+}
+
+nav.scrolled {
+	background: var(--background) !important;
+	backdrop-filter: blur(10px);
+	border-bottom: 1px solid var(--nav-border);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+nav.scrolled .menuLink {
+	color: var(--foreground);
+}
+
+nav.scrolled .menuLink:hover {
+	color: var(--primary);
+}
+
+/* Desktop: sin scroll - texto blanco */
+@media (min-width: 1024px) {
+	nav:not(.scrolled) {
+		background: transparent !important;
+	}
+
+	nav:not(.scrolled) .menuLink {
+		color: white;
+	}
+
+	nav:not(.scrolled) .menuLink:hover {
+		color: rgba(255, 255, 255, 0.8);
+	}
+}
+
+/* Mobile: siempre con fondo según tema */
+@media (max-width: 1023px) {
+	nav {
+		background: var(--background) !important;
+		border-bottom: 1px solid var(--nav-border);
+	}
+
+	nav .menuLink {
+		color: var(--foreground);
+	}
+
+	nav .menuLink:hover {
+		color: var(--primary);
+	}
 }

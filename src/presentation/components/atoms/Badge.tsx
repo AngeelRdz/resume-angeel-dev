@@ -8,7 +8,7 @@ type BadgeProps = {
 
 const toneStyles: Record<Required<BadgeProps>["tone"], string> = {
   neutral: "bg-foreground/10 text-foreground",
-  accent: "bg-blue-500/15 text-blue-500",
+  accent: "badge-accent",
   success: "bg-emerald-500/15 text-emerald-500",
 };
 

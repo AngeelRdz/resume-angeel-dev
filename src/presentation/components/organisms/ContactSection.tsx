@@ -1,5 +1,6 @@
 import { Heading } from "@/presentation/components/atoms/Heading";
 import { Text } from "@/presentation/components/atoms/Text";
+import { SocialIcon } from "@/presentation/components/atoms/SocialIcon";
 import type { HomeViewModel } from "@/presentation/view-models/homeViewModel";
 
 type ContactSectionProps = {
@@ -18,7 +19,8 @@ export function ContactSection({ data }: ContactSectionProps) {
           <Text variant="body" className="mt-2 text-lg font-semibold">
             <a
               href={`mailto:${data.email}`}
-              className="underline decoration-foreground/40 underline-offset-4 transition-colors hover:decoration-foreground"
+              className="underline decoration-link/40 underline-offset-4 transition-colors hover:decoration-link"
+              style={{ color: "var(--link-color)" }}
             >
               {data.email}
             </a>
@@ -27,16 +29,23 @@ export function ContactSection({ data }: ContactSectionProps) {
         {data.socials.length > 0 && (
           <div className="rounded-3xl border border-foreground/10 p-6">
             <Text variant="caption">{data.socialLabel}</Text>
-            <ul className="mt-2 space-y-2">
+            <ul className="mt-2 space-y-3">
               {data.socials.map((social) => (
                 <li key={social.id}>
                   <a
                     href={social.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-sm font-medium text-foreground transition-colors hover:text-foreground/70"
+                    target={social.url.startsWith("tel:") ? undefined : "_blank"}
+                    rel={social.url.startsWith("tel:") ? undefined : "noreferrer"}
+                    className="flex items-center gap-3 text-sm font-medium transition-colors hover:opacity-80"
+                    style={{ color: "var(--link-color)" }}
                   >
-                    {social.label}
+                    <div 
+                      className="flex-shrink-0"
+                      style={{ color: "var(--link-color)" }}
+                    >
+                      <SocialIcon type={social.id} size="sm" variant="icon-only" />
+                    </div>
+                    <span>{social.label}</span>
                   </a>
                 </li>
               ))}

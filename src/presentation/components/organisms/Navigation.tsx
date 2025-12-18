@@ -38,68 +38,17 @@ export function Navigation() {
   };
 
   const isDark = theme === "dark";
-  const hasBackground = isScrolled;
-  
-  // Sin scroll: transparente en ambos modos
-  // Con scroll: usa var(--background) que cambia según el tema
-  const navStyle: React.CSSProperties = hasBackground
-    ? { backgroundColor: "var(--background)" }
-    : {};
-
-  const navClasses = cn(
-    "fixed left-0 right-0 top-0 z-50 transition-all duration-500 ease-in-out",
-    // Desktop: transparente inicialmente, luego fondo según scroll
-    "lg:border-b lg:backdrop-blur-md",
-    hasBackground
-      ? isDark
-        ? "lg:border-foreground/20"
-        : "lg:border-foreground/10"
-      : "lg:bg-transparent lg:border-transparent",
-    // Mobile: siempre con fondo según tema
-    "border-b backdrop-blur-md",
-    isDark
-      ? "bg-background border-foreground/20"
-      : "bg-background/95 border-foreground/10",
-  );
-
-  const textClasses = cn(
-    "text-sm font-medium transition-colors duration-500 ease-in-out px-4 py-2",
-    // Desktop: texto blanco inicialmente, luego según tema
-    hasBackground
-      ? isDark
-        ? "lg:text-foreground lg:hover:text-primary"
-        : "lg:text-foreground lg:hover:text-primary"
-      : "lg:text-white lg:hover:text-white/80",
-    // Mobile: siempre según tema
-    isDark
-      ? "text-foreground hover:text-primary"
-      : "text-foreground/80 hover:text-foreground",
-  );
-
-  const buttonClasses = cn(
-    "flex h-10 w-10 items-center justify-center rounded-md border transition-colors duration-500 ease-in-out",
-    hasBackground
-      ? isDark
-        ? "lg:border-foreground/30 lg:bg-background lg:text-foreground lg:hover:bg-foreground/10"
-        : "lg:border-foreground/20 lg:bg-white lg:text-foreground lg:hover:bg-foreground/5"
-      : "lg:border-white/30 lg:bg-transparent lg:text-white lg:hover:bg-white/10",
-    // Mobile: siempre según tema
-    isDark
-      ? "border-foreground/30 bg-background text-foreground hover:bg-foreground/10 lg:hidden"
-      : "border-foreground/20 bg-background text-foreground hover:bg-foreground/5 lg:hidden",
-  );
 
   return (
     <nav 
-      className={navClasses}
-      style={navStyle}
+      className={cn("fixed left-0 right-0 top-0 z-50", isScrolled && "scrolled")}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-12">
         <div className="flex items-center gap-6">
           <button
             type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={buttonClasses}
+            className="flex h-10 w-10 items-center justify-center rounded-md border border-foreground/20 bg-background text-foreground transition-colors duration-500 ease-in-out hover:bg-foreground/10 lg:hidden"
             aria-label={t("nav.menu")}
             aria-expanded={isMenuOpen}
           >
@@ -130,10 +79,7 @@ export function Navigation() {
 
           <ul
             className={cn(
-              "absolute left-0 right-0 top-full flex flex-col gap-2 border-b p-6 backdrop-blur-md transition-all duration-500 ease-in-out lg:static lg:flex-row lg:border-0 lg:bg-transparent lg:gap-6 lg:p-0",
-              isDark
-                ? "border-foreground/20 bg-background"
-                : "border-foreground/10 bg-background/95",
+              "absolute left-0 right-0 top-full flex flex-col gap-2 border-b nav-border bg-background p-6 backdrop-blur-md transition-all duration-500 ease-in-out lg:static lg:flex-row lg:border-0 lg:bg-transparent lg:gap-6 lg:p-0",
               isMenuOpen ? "block" : "hidden lg:flex",
             )}
           >
@@ -142,7 +88,7 @@ export function Navigation() {
                 <button
                   type="button"
                   onClick={() => handleNavClick(item.href)}
-                  className={textClasses}
+                  className="menuLink text-sm font-medium transition-colors duration-500 ease-in-out px-4 py-2"
                 >
                   {t(item.key)}
                 </button>
@@ -152,8 +98,8 @@ export function Navigation() {
         </div>
 
         <div className="flex items-center gap-3">
-          <ThemeToggle isScrolled={hasBackground} isDark={isDark} />
-          <LanguageSwitcher isScrolled={hasBackground} isDark={isDark} />
+          <ThemeToggle isScrolled={isScrolled} isDark={isDark} />
+          <LanguageSwitcher isScrolled={isScrolled} />
         </div>
       </div>
     </nav>

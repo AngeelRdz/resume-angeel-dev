@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Badge } from "@/presentation/components/atoms/Badge";
 import { Heading } from "@/presentation/components/atoms/Heading";
 import { Text } from "@/presentation/components/atoms/Text";
@@ -9,8 +12,31 @@ type HeroSectionProps = {
   data: HomeViewModel["hero"];
 };
 
-export function HeroSection({ data }: HeroSectionProps) {
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.1, 0.25, 1] as const,
+    },
+  },
+};
+
+
+export function HeroSection({ data }: HeroSectionProps) {
   return (
     <>
       <section
@@ -19,36 +45,68 @@ export function HeroSection({ data }: HeroSectionProps) {
         style={{ backgroundColor: "var(--hero-bg)" }}
       >
         <div className="relative mx-auto max-w-6xl px-6 py-20 sm:px-12">
-          <div className="flex flex-col gap-8">
+          <motion.div
+            className="flex flex-col gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+          >
             <div className="flex flex-col gap-4">
-              <div className="flex flex-wrap gap-3">
+              <motion.div
+                className="flex flex-wrap gap-3"
+                variants={itemVariants}
+              >
                 {data.highlights.map((highlight) => (
-                  <Badge key={highlight.id} tone="accent" className="bg-primary-foreground/20 text-primary-foreground">
+                  <Badge
+                    key={highlight.id}
+                    tone="accent"
+                    className="bg-white/20 text-white"
+                  >
                     {highlight.value}
                   </Badge>
                 ))}
-              </div>
-              <Text variant="small" className="uppercase tracking-wide text-primary-foreground/80">
-                {data.greeting}
-              </Text>
-              <Heading as={1} className="text-5xl sm:text-6xl text-primary-foreground">
-                {data.name}
-              </Heading>
-              <Heading as={3} className="text-2xl text-primary-foreground/90">
-                {data.role}
-              </Heading>
-              <Text className="max-w-2xl text-lg text-primary-foreground/90">
-                {data.headline}
-              </Text>
-              <Text variant="muted" className="text-primary-foreground/80">
-                {data.availability}
-              </Text>
-              <Text variant="small" className="uppercase tracking-wide text-primary-foreground/70">
-                {data.location}
-              </Text>
+              </motion.div>
+              <motion.div variants={itemVariants}>
+                <Text
+                  variant="small"
+                  className="uppercase tracking-wide text-white/80"
+                >
+                  {data.greeting}
+                </Text>
+              </motion.div>
+              <motion.div variants={itemVariants}>
+                <Heading as={1} className="text-5xl sm:text-6xl text-white">
+                  {data.name}
+                </Heading>
+              </motion.div>
+              <motion.div variants={itemVariants}>
+                <Heading as={3} className="text-2xl text-white/90">
+                  {data.role}
+                </Heading>
+              </motion.div>
+              <motion.div variants={itemVariants}>
+                <Text className="max-w-2xl text-lg text-white/90">
+                  {data.headline}
+                </Text>
+              </motion.div>
+              <motion.div variants={itemVariants}>
+                <Text variant="muted" className="text-white/80">
+                  {data.availability}
+                </Text>
+              </motion.div>
+              <motion.div variants={itemVariants}>
+                <Text
+                  variant="small"
+                  className="uppercase tracking-wide text-white/70"
+                >
+                  {data.location}
+                </Text>
+              </motion.div>
             </div>
-            <ActionBar actions={data.actions} />
-          </div>
+            <motion.div variants={itemVariants}>
+              <ActionBar actions={data.actions} />
+            </motion.div>
+          </motion.div>
         </div>
         <div className="text-background">
           <WaveDivider />

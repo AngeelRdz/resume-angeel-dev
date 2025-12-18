@@ -23,13 +23,14 @@ export function ThemeToggle({ isScrolled = false, isDark = false }: ThemeToggleP
 
   const buttonClasses = cn(
     "flex h-10 w-10 items-center justify-center rounded-md border transition-colors duration-500 ease-in-out",
-    isScrolled
-      ? isDark
-        ? "border-foreground/30 bg-background hover:bg-foreground/10"
-        : "border-foreground/20 bg-white hover:bg-foreground/5"
-      : "lg:border-white/30 lg:bg-transparent lg:hover:bg-white/10",
+    // Desktop sin scroll: transparente con borde y texto blanco
+    !isScrolled && "lg:border-white/30 lg:bg-transparent lg:hover:bg-white/10",
+    // Desktop con scroll: según tema
+    isScrolled && isDark && "lg:border-foreground/30 lg:bg-transparent lg:hover:bg-primary/20",
+    isScrolled && !isDark && "lg:border-foreground/20 lg:bg-white lg:hover:bg-foreground/5",
+    // Mobile: siempre con fondo según tema
     isDark
-      ? "border-foreground/30 bg-background hover:bg-foreground/10"
+      ? "border-foreground/30 bg-background hover:bg-primary/20"
       : "border-foreground/20 bg-background hover:bg-foreground/5",
   );
 

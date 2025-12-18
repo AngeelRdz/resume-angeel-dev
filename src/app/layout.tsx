@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { defaultLocale } from "@/config/i18n.config";
+import { I18nProvider } from "@/presentation/components/atoms/I18nProvider";
 import { ThemeProvider } from "@/presentation/providers/ThemeProvider";
 
 import "./globals.css";
@@ -40,7 +41,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground antialiased`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <I18nProvider>{children}</I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

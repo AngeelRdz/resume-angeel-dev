@@ -56,6 +56,7 @@ function mapPersonalInfo(user: UserWithRelations): PersonalInfo {
 		fullName: user.fullName,
 		headline: user.headline,
 		summary: user.summary,
+		profileImageUrl: user.profileImageUrl,
 		birthDate: user.birthDate ? user.birthDate.toISOString() : null,
 		location: {
 			city: user.locationCity,
@@ -78,6 +79,7 @@ function mapTechnology(
 		id: technology.id,
 		name: technology.name,
 		category: technology.category as TechnologyCategory,
+		iconName: technology.iconName ?? null,
 	};
 }
 
@@ -163,6 +165,12 @@ export class PrismaProfileRepository implements ProfileRepository {
 	constructor(private readonly client: PrismaClient) {}
 
 	async getProfile(params?: { userId?: string }): Promise<Profile | null> {
+		console.log(
+			"🗄️  [Repository] PrismaProfileRepository - Consultando base de datos",
+			params ? { userId: params.userId } : ""
+		);
+		const startTime = performance.now();
+
 		const user = await this.client.user.findFirst({
 			where: params?.userId ? { id: params.userId } : undefined,
 			include: {
@@ -196,10 +204,26 @@ export class PrismaProfileRepository implements ProfileRepository {
 			},
 		});
 
+		const dbDuration = Math.round(performance.now() - startTime);
+		console.log(
+			`⏱️  [Repository] PrismaProfileRepository - Consulta DB completada (${dbDuration}ms)`
+		);
+
 		if (!user) {
+			console.log(
+				"⚠️  [Repository] PrismaProfileRepository - Usuario no encontrado en DB"
+			);
 			return null;
 		}
 
-		return mapProfile(user);
+		console.log(
+			`✅ [Repository] PrismaProfileRepository - Usuario encontrado: ${user.fullName}`
+		);
+		const mappedProfile = mapProfile(user);
+		console.log(`   - Experiencias: ${mappedProfile.experiences.length}`);
+		console.log(`   - Skills: ${mappedProfile.skills.length}`);
+		console.log(`   - Technologies: ${mappedProfile.technologies.length}`);
+
+		return mappedProfile;
 	}
 }
