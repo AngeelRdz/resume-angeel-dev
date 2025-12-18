@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from "react";
+import type { TFunction } from "i18next";
 
 import type { Profile } from "@/core/domain/entities/profile";
 import { Navigation } from "@/presentation/components/organisms/Navigation";
@@ -21,7 +22,7 @@ export function HomeTemplate({ profile }: HomeTemplateProps) {
   const { t, i18n } = useI18n();
 
   const viewModel = useMemo(
-    () => createHomeViewModel({ profile, t, language: i18n.language }),
+    () => createHomeViewModel({ profile, t: t as TFunction, language: i18n.language }),
     [profile, t, i18n.language],
   );
 

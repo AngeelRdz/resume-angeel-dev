@@ -28,6 +28,7 @@ export interface PersonalInfo {
 	fullName: string;
 	headline: string;
 	summary: string;
+	profileImageUrl?: string | null;
 	birthDate?: string | null;
 	location: {
 		city: string;
@@ -46,6 +47,7 @@ export interface Technology {
 	id: string;
 	name: string;
 	category: TechnologyCategory;
+	iconName?: string | null;
 }
 
 export interface Skill {

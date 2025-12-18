@@ -1,5 +1,10 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Badge } from "@/presentation/components/atoms/Badge";
 import { Heading } from "@/presentation/components/atoms/Heading";
 import { Text } from "@/presentation/components/atoms/Text";
+import { TechnologyIcon } from "@/presentation/components/atoms/TechnologyIcon";
 import type { ProjectViewModel } from "@/presentation/view-models/homeViewModel";
 
 type ProjectCardProps = {
@@ -8,7 +13,11 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="group rounded-3xl border border-foreground/10 bg-background/80 p-6 transition-transform hover:-translate-y-1 hover:shadow-lg">
+    <motion.article
+      className="group rounded-3xl border border-foreground/10 bg-background/80 p-6"
+      whileHover={{ y: -4, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
+      transition={{ duration: 0.3 }}
+    >
       <Text variant="caption" className="uppercase tracking-wide text-foreground/60">
         {project.company}
       </Text>
@@ -21,14 +30,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </Text>
       )}
       {project.techStack.length > 0 && (
-        <div className="mt-4 flex flex-wrap gap-2 text-xs text-foreground/70">
+        <div className="mt-4 flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-full border border-foreground/20 px-3 py-1"
-            >
-              {tech}
-            </span>
+            <Badge key={tech.name} tone="accent" className="flex items-center gap-2">
+              <TechnologyIcon name={tech.name} iconName={tech.iconName} size="sm" />
+              <span>{tech.name}</span>
+            </Badge>
           ))}
         </div>
       )}
@@ -38,13 +45,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
             href={project.url}
             target="_blank"
             rel="noreferrer"
-            className="text-foreground underline underline-offset-4 transition-colors hover:text-foreground/70"
+            className="underline underline-offset-4 transition-colors"
+            style={{ color: "var(--link-color)" }}
           >
             {project.url.replace(/^https?:\/\//, "")}
           </a>
         </Text>
       )}
-    </article>
+    </motion.article>
   );
 }
 

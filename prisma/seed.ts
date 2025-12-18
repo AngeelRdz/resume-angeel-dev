@@ -10,36 +10,122 @@ import {
 const prisma = new PrismaClient();
 
 const technologiesSeed = [
-	{ name: "React.js", category: TechnologyCategory.FRONTEND },
-	{ name: "Angular", category: TechnologyCategory.FRONTEND },
-	{ name: "AngularJS", category: TechnologyCategory.FRONTEND },
-	{ name: "Next.js", category: TechnologyCategory.FRONTEND },
-	{ name: "TypeScript", category: TechnologyCategory.FRONTEND },
-	{ name: "JavaScript", category: TechnologyCategory.FRONTEND },
-	{ name: "Redux", category: TechnologyCategory.TOOLING },
-	{ name: "PrimeNG", category: TechnologyCategory.FRONTEND },
-	{ name: "Sass", category: TechnologyCategory.FRONTEND },
-	{ name: "CSS-in-JS", category: TechnologyCategory.FRONTEND },
-	{ name: "Webpack", category: TechnologyCategory.TOOLING },
-	{ name: "Node.js", category: TechnologyCategory.BACKEND },
-	{ name: "Express", category: TechnologyCategory.BACKEND },
-	{ name: "PHP", category: TechnologyCategory.BACKEND },
-	{ name: ".NET", category: TechnologyCategory.BACKEND },
-	{ name: "Java", category: TechnologyCategory.BACKEND },
-	{ name: "MySQL", category: TechnologyCategory.DATABASE },
-	{ name: "MongoDB", category: TechnologyCategory.DATABASE },
-	{ name: "SQL Server", category: TechnologyCategory.DATABASE },
-	{ name: "Kotlin", category: TechnologyCategory.MOBILE },
-	{ name: "Swift", category: TechnologyCategory.MOBILE },
-	{ name: "React Native", category: TechnologyCategory.MOBILE },
-	{ name: "Foundation", category: TechnologyCategory.FRONTEND },
-	{ name: "Materialize", category: TechnologyCategory.FRONTEND },
-	{ name: "Bootstrap", category: TechnologyCategory.FRONTEND },
-	{ name: "MeteorJS", category: TechnologyCategory.BACKEND },
-	{ name: "Figma", category: TechnologyCategory.DESIGN },
-	{ name: "Storybook", category: TechnologyCategory.TOOLING },
-	{ name: "GitHub", category: TechnologyCategory.TOOLING },
-	{ name: "Bitbucket", category: TechnologyCategory.TOOLING },
+	{
+		name: "React.js",
+		category: TechnologyCategory.FRONTEND,
+		iconName: "react",
+	},
+	{
+		name: "Angular",
+		category: TechnologyCategory.FRONTEND,
+		iconName: "angular",
+	},
+	{
+		name: "AngularJS",
+		category: TechnologyCategory.FRONTEND,
+		iconName: "angular",
+	},
+	{
+		name: "Next.js",
+		category: TechnologyCategory.FRONTEND,
+		iconName: "nextjs",
+	},
+	{
+		name: "TypeScript",
+		category: TechnologyCategory.FRONTEND,
+		iconName: "typescript",
+	},
+	{
+		name: "JavaScript",
+		category: TechnologyCategory.FRONTEND,
+		iconName: "javascript",
+	},
+	{ name: "Redux", category: TechnologyCategory.TOOLING, iconName: "redux" },
+	{
+		name: "PrimeNG",
+		category: TechnologyCategory.FRONTEND,
+		iconName: "angular",
+	},
+	{ name: "Sass", category: TechnologyCategory.FRONTEND, iconName: "sass" },
+	{
+		name: "CSS-in-JS",
+		category: TechnologyCategory.FRONTEND,
+		iconName: "cssinjs",
+	},
+	{
+		name: "Webpack",
+		category: TechnologyCategory.TOOLING,
+		iconName: "webpack",
+	},
+	{ name: "Node.js", category: TechnologyCategory.BACKEND, iconName: "nodejs" },
+	{
+		name: "Express",
+		category: TechnologyCategory.BACKEND,
+		iconName: "express",
+	},
+	{ name: "PHP", category: TechnologyCategory.BACKEND, iconName: "php" },
+	{ name: ".NET", category: TechnologyCategory.BACKEND, iconName: "dotnet" },
+	{ name: "Java", category: TechnologyCategory.BACKEND, iconName: "java" },
+	{ name: "MySQL", category: TechnologyCategory.DATABASE, iconName: "mysql" },
+	{
+		name: "MongoDB",
+		category: TechnologyCategory.DATABASE,
+		iconName: "mongodb",
+	},
+	{
+		name: "SQL Server",
+		category: TechnologyCategory.DATABASE,
+		iconName: "sqlserver",
+	},
+	{ name: "Kotlin", category: TechnologyCategory.MOBILE, iconName: "kotlin" },
+	{ name: "Swift", category: TechnologyCategory.MOBILE, iconName: "swift" },
+	{
+		name: "React Native",
+		category: TechnologyCategory.MOBILE,
+		iconName: "reactnative",
+	},
+	{
+		name: "Foundation",
+		category: TechnologyCategory.FRONTEND,
+		iconName: "foundation",
+	},
+	{
+		name: "Materialize",
+		category: TechnologyCategory.FRONTEND,
+		iconName: "materialize",
+	},
+	{
+		name: "Bootstrap",
+		category: TechnologyCategory.FRONTEND,
+		iconName: "bootstrap",
+	},
+	{
+		name: "MeteorJS",
+		category: TechnologyCategory.BACKEND,
+		iconName: "meteor",
+	},
+	{ name: "Figma", category: TechnologyCategory.DESIGN, iconName: "figma" },
+	{
+		name: "Storybook",
+		category: TechnologyCategory.TOOLING,
+		iconName: "storybook",
+	},
+	{ name: "GitHub", category: TechnologyCategory.TOOLING, iconName: "github" },
+	{
+		name: "Bitbucket",
+		category: TechnologyCategory.TOOLING,
+		iconName: "bitbucket",
+	},
+	{ name: "Jest", category: TechnologyCategory.TOOLING, iconName: "jest" },
+	{ name: "GCP", category: TechnologyCategory.TOOLING, iconName: "gcp" },
+	{
+		name: "Jenkins",
+		category: TechnologyCategory.TOOLING,
+		iconName: "jenkins",
+	},
+	{ name: "Git", category: TechnologyCategory.TOOLING, iconName: "git" },
+	{ name: "Docker", category: TechnologyCategory.TOOLING, iconName: "docker" },
+	{ name: "CI/CD", category: TechnologyCategory.TOOLING, iconName: "cicd" },
 ] as const;
 
 const skillsSeed = [
@@ -89,21 +175,77 @@ const skillsSeed = [
 
 const experiencesSeed = [
 	{
+		companyName: "Envia Ya",
+		companyWebsite: "https://enviaya.com.mx/es",
+		companyLocation: "México",
+		roleTitle: "Frontend Developer",
+		description:
+			"Desarrollo de interfaces Frontend utilizando React.js, Next.js, Storybook y principios de Atomic Design, garantizando componentes escalables, reutilizables y mantenibles.",
+		startDate: new Date("2025-05-01"),
+		endDate: null,
+		isCurrent: true,
+		responsibilities: [
+			"Desarrollo de interfaces Frontend utilizando React.js, Next.js, Storybook y principios de Atomic Design, garantizando componentes escalables, reutilizables y mantenibles.",
+			"Implementación, optimización y mantenimiento de la plataforma aplicando Clean Architecture y principios SOLID, asegurando código modular, claro y de alta calidad.",
+			"Integración y consumo de servicios RESTful alojados en AWS y Google Cloud Platform, manejando autenticación, validación de datos, optimización de rendimiento y manejo de errores.",
+			"Creación y documentación de componentes UI en Storybook, fortaleciendo el Design System con elementos consistentes, accesibles y listos para producción.",
+			"Colaboración en procesos de despliegue mediante Git, Jenkins, Docker y pipelines de CI/CD, agilizando lanzamientos y mejorando la estabilidad.",
+			"Desarrollo y validación de pruebas automatizadas con Jest, aumentando la confiabilidad y reduciendo regresiones en módulos críticos.",
+			"Apoyo en tareas backend utilizando Node.js, Express y MongoDB para debugging, validación de endpoints e integración entre servicios.",
+		],
+		projects: [
+			{
+				name: "@angel-storybook/design-system",
+				description:
+					"Paquete NPM con componentes del Design System documentados en Storybook.",
+				url: "https://www.npmjs.com/package/@angel-storybook/design-system",
+			},
+			{
+				name: "Platform Envia Ya (Staging)",
+				description: "Plataforma de gestión de envíos en ambiente de staging.",
+				url: "https://platform.stg.enviaya.com.mx",
+			},
+			{
+				name: "Envia Ya",
+				description: "Plataforma principal de envíos de Envia Ya.",
+				url: "https://enviaya.com.mx/es",
+			},
+		],
+		technologies: [
+			"React.js",
+			"Next.js",
+			"Storybook",
+			"TypeScript",
+			"Node.js",
+			"Express",
+			"MongoDB",
+			"Jest",
+			"GCP",
+			"Jenkins",
+			"Git",
+			"Docker",
+			"CI/CD",
+		],
+	},
+	{
 		companyName: "Smart Payment Services",
 		companyWebsite:
 			"https://shell.dev.stg.smartpayment.com.mx/admin-login/sign-in",
-		companyLocation: "Ciudad de México, México",
+		companyLocation: "México",
 		roleTitle: "Frontend Developer",
 		description:
-			"Desarrollo de plataformas de pago y micro-frontends para soluciones financieras de pagos digitales.",
+			"Desarrollo Frontend con Next.js, React.js, AngularJS, JavaScript, Redux y PrimeNG, contribuyendo a aplicaciones escalables y de alto rendimiento.",
 		startDate: new Date("2024-04-01"),
 		endDate: new Date("2025-04-01"),
 		isCurrent: false,
 		responsibilities: [
-			"Desarrollo en React.js, Angular.js, JavaScript, Redux y PrimeNG para módulos críticos del sistema.",
-			"Implementación y mantenimiento de micro-frontends para escalar nuevos productos sin afectar el core.",
-			"Integración de servicios en múltiples plataformas asegurando consistencia y observabilidad.",
-			"Desarrollo de una plataforma de pagos mediante liga directa para clientes empresariales.",
+			"Desarrollo Frontend con Next.js, React.js, AngularJS, JavaScript, Redux y PrimeNG, contribuyendo a aplicaciones escalables y de alto rendimiento.",
+			"Implementación y mantenimiento de micro-frontends para distintos módulos del sistema, favoreciendo la modularidad y los despliegues independientes.",
+			"Integración de RESTful APIs en múltiples plataformas, asegurando comunicación segura, estable y eficiente entre servicios.",
+			"Desarrollo de una plataforma de pagos mediante liga directa para clientes, incluyendo diseño de interfaz, manejo de autenticación y orquestación de servicios.",
+			"Uso de Node.js, Express y MongoDB para soporte en integraciones backend y verificación de consistencia en los endpoints consumidos por el frontend.",
+			"Ejecución de pruebas unitarias y de integración con Jest, aumentando la cobertura y estabilidad en módulos relacionados con pagos.",
+			"Uso de servicios en la nube con GCP y configuración de pipelines de CI/CD (Git, Jenkins, Docker) para automatizar builds y optimizar los tiempos de despliegue.",
 		],
 		projects: [
 			{
@@ -115,33 +257,43 @@ const experiencesSeed = [
 		],
 		technologies: [
 			"React.js",
+			"Next.js",
 			"AngularJS",
 			"JavaScript",
 			"Redux",
 			"PrimeNG",
 			"TypeScript",
+			"Node.js",
+			"Express",
+			"MongoDB",
+			"Jest",
+			"GCP",
+			"Jenkins",
+			"Git",
+			"Docker",
+			"CI/CD",
 		],
 	},
 	{
 		companyName: "Amco",
 		companyWebsite: "https://www.claromusica.com",
-		companyLocation: "Ciudad de México, México",
+		companyLocation: "México",
 		roleTitle: "Frontend Developer",
 		description:
-			"Construcción y mejora de plataformas de entretenimiento digital con enfoque en performance y experiencia de usuario.",
+			"Desarrollo y mejora de plataformas Claro Música y Claro Video.",
 		startDate: new Date("2020-03-01"),
 		endDate: new Date("2024-04-01"),
 		isCurrent: false,
 		responsibilities: [
-			"Desarrollo y evolución de Claro Música y Claro Video con React.js, Redux, SASS y JavaScript.",
-			"Integración de servicios web y optimización de funcionalidades para mercados de alto tráfico.",
-			"Desarrollo de aplicaciones Smart TV basadas en tecnologías web para Claro Video.",
+			"Desarrollo y mejora de plataformas Claro Música y Claro Video.",
+			"Integración de servicios web y optimización de funcionalidades.",
+			"Desarrollo en React.js, Redux, SASS y JavaScript.",
+			"Creación de aplicaciones para Smart TV (Claro Video).",
 		],
 		projects: [
 			{
 				name: "Claro Música",
-				description:
-					"Actualización continua de la plataforma de streaming musical para LATAM.",
+				description: "Plataforma de streaming musical para LATAM.",
 				url: "https://www.claromusica.com",
 			},
 			{
@@ -151,29 +303,21 @@ const experiencesSeed = [
 				url: null,
 			},
 		],
-		technologies: [
-			"React.js",
-			"Redux",
-			"Sass",
-			"JavaScript",
-			"Webpack",
-			"TypeScript",
-		],
+		technologies: ["React.js", "Redux", "Sass", "JavaScript", "Webpack"],
 	},
 	{
 		companyName: "MAYAHII",
 		companyWebsite: null,
-		companyLocation: "Ciudad de México, México",
+		companyLocation: "México",
 		roleTitle: "Frontend Developer",
-		description:
-			"Diseño y construcción de productos digitales con foco en performance, componentización y experiencia de usuario.",
+		description: "Desarrollo en React.js, Redux, Webpack y CSS-in-JS.",
 		startDate: new Date("2018-10-01"),
 		endDate: new Date("2020-03-01"),
 		isCurrent: false,
 		responsibilities: [
-			"Desarrollo en React.js, Redux, Webpack y CSS-in-JS para productos digitales de alto impacto.",
-			"Maquetación de mockups y análisis para la integración de servicios REST.",
-			"Optimización de la experiencia de usuario y métricas de conversión.",
+			"Desarrollo en React.js, Redux, Webpack y CSS-in-JS.",
+			"Maquetación de mockups y análisis de integración de servicios.",
+			"Optimización de la experiencia de usuario en productos digitales.",
 		],
 		projects: [],
 		technologies: ["React.js", "Redux", "Webpack", "CSS-in-JS", "JavaScript"],
@@ -181,29 +325,30 @@ const experiencesSeed = [
 	{
 		companyName: "Capital Online",
 		companyWebsite: null,
-		companyLocation: "Ciudad de México, México",
+		companyLocation: "México",
 		roleTitle: "Fullstack Developer",
 		description:
-			"Implementación de soluciones web y móviles para campañas digitales, landing pages y sistemas internos.",
+			"Implementación de sistemas de gestión y recopilación de datos.",
 		startDate: new Date("2017-06-01"),
 		endDate: new Date("2018-08-01"),
 		isCurrent: false,
 		responsibilities: [
-			"Implementación de sistemas de gestión y recopilación de datos para áreas comerciales.",
-			"Desarrollo de landing pages y CMS personalizados con integración completa frontend/backend.",
-			"Publicación de aplicaciones móviles en Play Store utilizando stack híbrido.",
+			"Implementación de sistemas de gestión y recopilación de datos.",
+			"Desarrollo de landing pages y CMS (frontend y backend).",
+			"Desarrollo de aplicaciones móviles publicadas en Play Store.",
+			"Uso de Angular, MeteorJS, Foundation, Materialize, Bootstrap y SASS.",
 		],
 		projects: [
 			{
-				name: "Landing pages y CMS multicliente",
+				name: "Implementación en desarrollo web",
 				description:
-					"Ecosistema de landings y CMS administrables para campañas masivas.",
+					"Implementación en desarrollo web utilizando frameworks como Angular y Meteor JS para el frontend. Además de usar Foundation, Materialize y Bootstrap. Así como el manejo de SASS y JavaScript.",
 				url: null,
 			},
 			{
-				name: "Aplicaciones móviles Xeror y Sura",
+				name: "Aplicaciones móviles Xerox y Sura",
 				description:
-					"Aplicaciones móviles híbridas publicadas en Play Store para clientes corporativos.",
+					"Aplicaciones móviles en la Play Store que en ese momento se publicaron como Xerox, Sura.",
 				url: null,
 			},
 		],
@@ -221,29 +366,28 @@ const experiencesSeed = [
 	{
 		companyName: "Mandarina Digital",
 		companyWebsite: null,
-		companyLocation: "Ciudad de México, México",
+		companyLocation: "México",
 		roleTitle: "Desarrollador de Software",
 		description:
-			"Desarrollo integral de sitios web y aplicaciones móviles para clientes corporativos.",
+			"Desarrollo de páginas web (Landing pages) - Frontend y Backend.",
 		startDate: new Date("2015-08-01"),
 		endDate: new Date("2017-03-01"),
 		isCurrent: false,
 		responsibilities: [
-			"Desarrollo de páginas web (landing pages) con stack fullstack.",
-			"Construcción de aplicaciones móviles y diseño de interfaces visuales.",
-			"Migración de soluciones heredadas en .NET hacia entornos web modernos.",
+			"Desarrollo de páginas web (Landing pages) - Frontend y Backend.",
+			"Desarrollo de aplicaciones móviles.",
+			"Diseño de interfaces de usuario gráficas (UX).",
 		],
 		projects: [
 			{
-				name: "Migración .NET a Web",
+				name: "Migración de desarrollo en .NET a desarrollo Web",
 				description:
-					"Transformación de aplicaciones internas a arquitecturas web modernas.",
+					"Migración de desarrollo en .NET a desarrollo Web en 6 meses.",
 				url: null,
 			},
 			{
 				name: "App Misas en Vivo",
-				description:
-					"Aplicación móvil publicada en la App Store para transmisión de eventos en vivo.",
+				description: "Aplicaciones móviles en la App Store.",
 				url: "https://itunes.apple.com/mx/app/misas-en-vivo/id1076018377?mt=8",
 			},
 		],
@@ -252,17 +396,17 @@ const experiencesSeed = [
 	{
 		companyName: "Solucionic",
 		companyWebsite: null,
-		companyLocation: "Ciudad de México, México",
-		roleTitle: "Programador / Tester / Mesa de servicio",
+		companyLocation: "México",
+		roleTitle: "Programador - Tester - Mesa de servicio",
 		description:
-			"Soporte y evolución de sistemas contables y de nómina con foco en estabilidad operativa.",
+			"Desarrollo y mantenimiento a los sistemas Contables y de Nómina.",
 		startDate: new Date("2013-12-01"),
 		endDate: new Date("2015-04-01"),
 		isCurrent: false,
 		responsibilities: [
-			"Desarrollo y mantenimiento de sistemas contables y de nómina.",
-			"Implementación de facturación electrónica (CFDI) conforme a normativas fiscales.",
-			"Gestión de mesa de servicio y liderazgo de un equipo de soporte.",
+			"Desarrollo y mantenimiento a los sistemas Contables y de Nómina.",
+			"Implementación de facturación electrónica (CFDI).",
+			"Responsable de la gestión de sistemas y Mesa de Servicio, liderazgo de un equipo de dos personas.",
 		],
 		projects: [],
 		technologies: [".NET", "SQL Server", "Java"],
@@ -293,6 +437,7 @@ async function main() {
 				"Frontend Developer | Ingeniero en Sistemas Computacionales | 33 años",
 			summary:
 				"Ingeniero en Sistemas Computacionales con 9 años de experiencia como Frontend Developer y soporte de sistemas. Especializado en React.js, Angular y arquitecturas modernas como Micro-Frontends, Clean Architecture y Atomic Design. Perfil creativo, adaptable y orientado a resultados, con pasión por el desarrollo web y la programación.",
+			profileImageUrl: null, // Agregar URL de tu imagen de perfil aquí
 			birthDate: null,
 			locationCity: "Ciudad de México",
 			locationRegion: "Alcaldía Gustavo A. Madero",
@@ -308,7 +453,10 @@ async function main() {
 		technologiesSeed.map((technology) =>
 			prisma.technology.upsert({
 				where: { name: technology.name },
-				update: { category: technology.category },
+				update: {
+					category: technology.category,
+					iconName: technology.iconName,
+				},
 				create: technology,
 			})
 		)
@@ -425,6 +573,12 @@ async function main() {
 		"Storybook",
 		"GitHub",
 		"Bitbucket",
+		"Jest",
+		"GCP",
+		"Jenkins",
+		"Git",
+		"Docker",
+		"CI/CD",
 	] as const;
 
 	for (const technologyName of userTechnologies) {

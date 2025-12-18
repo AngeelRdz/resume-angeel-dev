@@ -17,7 +17,7 @@ export function SkillGroup({ title, description, items }: SkillGroupProps) {
       </Text>
       <div className="mt-4 flex flex-wrap gap-2">
         {items.map((item) => (
-          <Badge key={item}>{item}</Badge>
+          <Badge key={item} tone="accent">{item}</Badge>
         ))}
       </div>
     </div>
